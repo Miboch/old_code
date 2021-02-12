@@ -1,0 +1,220 @@
+<div class="jumbo">
+  <div class="half-fade"></div>
+  <div class="gutters">
+    <h1>Project Outline</h1>
+    <h2>
+      This page outlines a few tasks which give a guided approach to rebuilding
+      the todo app front-end application
+    </h2>
+  </div>
+</div>
+<section></section>
+
+<section>
+  <div class="gutters two-col">
+    <div>
+      <h2>1. Plan your features</h2>
+      <p>
+        Looking at the supported API decide which features your todo app should
+        include.
+      </p>
+      <p>The example todo app includes:</p>
+      <ul>
+        <li>Creating new Todo Lists</li>
+        <li>Deleting Todo Lists</li>
+        <li>Creating new Tasks</li>
+        <li>Deleting Tasks</li>
+        <li>Completing Tasks</li>
+      </ul>
+      <p>
+        In addition to these, there are several other features that are
+        supported but not included in the example. You could include these in
+        your own project as well, if you want to:
+      </p>
+      <ul>
+        <li>Renaming Todo Lists</li>
+        <li>Renaming Tasks</li>
+        <li>Moving a task from one list to another list</li>
+        <li>Copying a task to a new list</li>
+        <li>Copying an entire list</li>
+      </ul>
+    </div>
+    <div class="f-center">
+      <img src="https://source.unsplash.com/320x400/?bird" alt="" />
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="gutters">
+    <h2>2. Create your layout</h2>
+    <p>
+      With your full feature set in mind, you can now begin to design the layout
+      of your application.
+    </p>
+    <p>when doing so take the following things into consideration:</p>
+    <ul>
+      <li>How are Todo lists displayed to the user</li>
+      <li>How does the user navigate between lists</li>
+      <li>How does the user interact with tasks</li>
+      <li>How should the layout of the controls be to be intuitive</li>
+    </ul>
+    <p>
+      Once you've figured out the Usability Concerns, think about whether you
+      want to support mobile as well
+    </p>
+    <p>If you do, what changes will happen to the layout then?</p>
+    <h3>After wireframing the layout of the controls</h3>
+    <p>
+      You can take a few moments to consider how you want the aestetics of your
+      app to be.
+    </p>
+  </div>
+</section>
+
+<section>
+  <div class="gutters">
+    <h2>3. Scaffold your Front-End Framework of choice</h2>
+    <p>
+      Download and setup your development environment for your front-end
+      framework of choice.
+    </p>
+    <p>You can utilize any framework you like. Here are a couple of suggestions that have widespread popularity.</p>
+    <ul>
+      <li>Angular 2+</li>
+      <li>React</li>
+      <li>Vue</li>
+      <li>Ember</li>
+      <li>Backbone</li>
+      <li>Blazor (new)</li>
+      <li>Likely many many more I never heard of... :)</li>
+    </ul>
+  </div>
+</section>
+<section>
+  <div class="gutters">
+    <h2>4. Implement Features</h2>
+    <p>
+      Begin implementing your features. The suggested approach is to first
+      implement each feature independently and then bring it all together in a
+      collective whole at the end.
+    </p>
+    <p>
+      For example: You might start with simply being able to get a list of all
+      tasks from the back-end and showing them on a page.
+    </p>
+    <p>
+      Then you would add the ability to show only tasks for a certain todo list
+    </p>
+    <p>Then add the ability to fetch details about the todo lists</p>
+    <div class="dotted-em">
+      <p>
+        If it seems hard to get a grasp on where to start with the features,
+        begin with the service and implement the network calls to the api. Play
+        with it and become familiar with its behavior
+      </p>
+      <p>
+        This should help build an understanding on the relationship between the
+        API and your UI.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="gutters">
+    <h2>5. Bonus Features</h2>
+    <p>
+      It is possible to use the Front-End to implement more advanced features based on
+      the state of your data without having to change your back-end.
+    </p>
+    <p>
+      Some things you could try:
+    </p>
+    <ul>
+      <li>
+        Sort the tasks in the todo list so that uncompleted tasks are always at
+        the top of the list
+      </li>
+      <li>
+        If you have an overview of todo lists, you could use the tasks.count to
+        show how many tasks are in the list
+      </li>
+      <li>
+        expanding on the idea above you could also show how many are completed
+        and uncompleted and a percentage measure
+      </li>
+      <li>
+        You could choose to hide or fade out todo lists where all tasks are
+        completed
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="gutters">
+    <h2 class="centered">We're done!</h2>
+    <h3 class="subheading centered">
+      If you completed all or most of the tasks outlined above you should have a
+      working Todo App! well done!
+    </h3>
+    <div class="water-boy"></div>
+  </div>
+</section>
+
+<section>
+  <div class="gutters">
+    <h2>6. Back-End Bonus Tasks!</h2>
+    <div class="dotted-em">
+      <p>These go well beyond the intended scope of this project</p>
+      <p>
+        However if you are up for the challenge there are several things that
+        can be done in the <code>server.js</code> file to improve on the project
+      </p>
+    </div>
+    <h3>The Issues</h3>
+    <p>
+      The project was left with a couple of issues in the provided API code to
+      keep the enthusiastic learner entertained. Let's start by fixing those
+    </p>
+    <ul>
+      <li>
+        In the <code>routes/todo.js</code> file fix the
+        <code>/api/todo/:todoId</code> get function to utilize a join instead of
+        doing a nested query.
+      </li>
+      <li>
+        In the <code>routes/todo.js</code> file fix the
+        <code>/api/todo/:todoId</code> delete method to clean up the tasks
+        table, deleting all tasks that have a reference to the now deleted todo
+        list
+      </li>
+    </ul>
+    <h3>The Expansion</h3>
+    <p>Expand the capabilities of the API. Here are a few suggestions:</p>
+    <ul>
+      <li>
+        Add a deleted column to each table, and change the delete logic to mark
+        rows as deleted instead of deleting them. This way data is more easily
+        retrievable if deletions occur by mistake
+      </li>
+      <li>
+        If you do the above, change the get logic to ignore rows that are marked
+        "deleted"
+      </li>
+      <li>
+        Add a todo_tasks with a foreign key to todos, and tasks and implement
+        task sharing between lists in your front-end.
+      </li>
+      <li>Add a taskgrouping table and add a task_group_id to the tasks table. Then implement a feature allowing for grouping tasks together (semantically sub-tasks)</li>
+      <li>
+        Add authentication and authorization. This would include adding a users
+        table, adding user_id to the todo tables and protecting the api
+        disallowing people who are not signed in from calling it, as well as
+        adding user sign up, login, and logout.
+      </li>
+    </ul>
+    <p>The above list is just suggestions. Pick and choose as you like, or do something completely different!</p>
+  </div>
+</section>

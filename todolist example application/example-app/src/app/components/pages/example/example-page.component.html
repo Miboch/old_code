@@ -1,0 +1,46 @@
+<div class="jumbo alt">
+  <div class="half-fade"></div>
+  <div class="gutters">
+    <h1>Example App</h1>
+    <h2>
+      Below is an implementation of the TODO App API to give an idea of how it
+      might work when completed
+    </h2>
+  </div>
+</div>
+<section></section>
+<section>
+  <app-list-selector (whenSelect)="selectChange($event)" [drawer]="todoDrawer"></app-list-selector>
+  <app-todo-list [selectedTodo]="selectedTodo" [drawer]="taskDrawer"></app-todo-list>
+</section>
+
+<app-drawer [title]="'Add new Todo'" #todoDrawer>
+  <div class="form-controls">
+    <div>
+      <label for="todoName">Todo List Name</label>
+      <input type="text" name="todoName" id="todoName" [(ngModel)]="todoName">
+    </div>
+    <div>
+      <label for="todoDescription">Description</label>
+      <textarea rows=20 [(ngModel)]="todoDescription"></textarea>
+    </div>
+
+    <div>
+      <button class="primary" (click)="createTodo(); todoDrawer.close()">Create Todo</button>
+    </div>
+  </div>
+</app-drawer>
+
+
+<app-drawer [title]="'Add new Task'" #taskDrawer>
+    <div class="form-controls">
+      <div>
+        <label for="todoName">Task Name</label>
+        <input type="text" name="todoName" id="todoName" [(ngModel)]="taskName">
+      </div>  
+      <div>
+        <button class="primary" (click)="createTask(); taskDrawer.close()">Create Task</button>
+      </div>
+    </div>
+  </app-drawer>
+  

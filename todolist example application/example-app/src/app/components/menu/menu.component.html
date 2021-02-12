@@ -1,0 +1,16 @@
+<div class="menu">
+  <div class="decorate"></div>
+  <div class="brand">
+    <img src="assets/brand.png" alt="">
+  </div>
+  <nav>
+    <ul>
+      <li><a [ngClass]="{'activated': isActive('project')}" [routerLink]="''">Project Outline</a></li>
+      <li><a [ngClass]="{'activated': isActive('example')}" [routerLink]="'example'">Example App</a></li>
+      <li><a [ngClass]="{'activated': isActive('apidoc')}" [routerLink]="'apidoc'">API Doc</a></li>
+    </ul>
+  </nav>
+  <div class="cta">
+      <a class="emph" href="https://github.com/miboch/todo-example" target="_blank">Github <i class="fab fa-github"></i></a>
+  </div>
+</div>

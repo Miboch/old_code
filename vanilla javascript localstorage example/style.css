@@ -1,0 +1,176 @@
+@import url('https://fonts.googleapis.com/css?family=Be+Vietnam&display=swap');
+
+:root {
+  --accent: cornflowerblue;
+}
+
+
+* {
+  box-sizing: border-box;
+  font-family: 'Be Vietnam', sans-serif;
+}
+
+html, body {
+  padding: 0;
+  margin: 0;
+  background-color: whitesmoke;
+}
+
+body {
+  height: 100%;
+}
+
+.page-content {
+  display: grid;
+  grid-template-rows: 120px auto;
+  grid-template-columns: 1fr;
+  row-gap: 1rem;
+  height: 100vh;
+}
+
+.header-container {
+  grid-row-start: 1;
+  background-color: var(--accent);
+  color: white;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 2.5em;
+  box-shadow: 0 2px 4px -1px #222;
+}
+
+.post-container {
+  grid-row-start: 2;
+  max-width: 1024px;
+  width: 100%;
+  padding: 1rem;
+  margin: 0 auto;
+  border: 1px solid rgba(0,0,0,0.08);
+  overflow-y: scroll;
+  height: 100%;
+}
+
+.actions-bar {
+  background-color: #e2e2e2;
+  padding: .5rem;
+  display: flex;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+  position: sticky;
+  top: -1rem;
+  z-index: 10;
+  box-shadow: 0 2px 3px -1px #222;
+}
+
+.actions-bar span {
+  margin-right: 1rem;
+}
+
+.actions-bar button {
+  margin-right: 1rem;
+}
+
+.modal-container {
+  position: absolute;
+  background-color: rgba(0,0,0,0.45);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  display: none;
+  z-index: 200;
+}
+
+.modal-content-container {
+  background-color: whitesmoke;
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-30%, -50%);
+  max-width: 600px;
+  width: 100%;
+  padding: 1rem 0;
+}
+
+.modal-content {
+  border: 1px solid rgba(0,0,0,0.08);
+  margin: 1rem;
+  padding: 1rem;
+}
+
+.modal-content h2 {
+  color: var(--accent);
+}
+
+.show {
+  display: block;
+}
+
+.pull-right {
+  margin-left: auto;
+}
+
+button.outline {
+  border: 1px solid;
+}
+
+button.outline.accent {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+button.outline:hover {
+  cursor: pointer;
+}
+
+button.outline.accent:hover {
+  background-color: var(--accent);
+  color: whitesmoke;
+}
+
+.post-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  padding: .5rem 1rem;
+}
+
+.post-wrapper:nth-child(2n) {
+  background-color: rgba(0,0,0,0.1);
+
+}
+
+.post-title {
+  position: relative;
+}
+
+.post-title h2 {
+  margin-top: .5rem;
+}
+
+.date-wrapper {
+  position: relative;
+  top: -20px;
+}
+
+form label {
+  display: block;
+  margin-bottom: 2px;
+}
+
+input[type="text"] {
+  display: block;
+  width: 100%;
+}
+
+
+textarea {
+  width: 100%;
+}
+
+form div button {
+  margin-right: 1rem;
+}

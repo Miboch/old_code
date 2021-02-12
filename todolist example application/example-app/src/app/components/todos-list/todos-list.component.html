@@ -1,0 +1,18 @@
+<div class="gutters m-t-3">
+  <div class="white-border">
+    <h3>{{ selectedTodo?.title }}</h3>
+    <h4 class="subheading">{{ selectedTodo?.description }}</h4>
+    <div class="max-tall">
+      <div *ngFor="let task of selectedTodo?.tasks" class="todo">
+        <span [ngClass]="{ striked: task.completed }">{{ task.taskname }}</span>
+        <div>
+          <button class="" (click)="completeTask(task)" [disabled]="task.completed">Complete Task</button>
+          <button class="delete stroke" (click)="deleteTask(task)">delete task</button>
+        </div>
+      </div>
+    </div>
+    <div class="bottom-controls">
+      <button class="" (click)="drawer.open()">Add Task <i class="fa fa-plus"></i></button>
+    </div>
+  </div>
+</div>

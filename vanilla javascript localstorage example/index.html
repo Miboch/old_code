@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Localstorage Playground</title>
+    <script src="data-model.js"></script>
+    <script src="dom-manipulations.js" defer></script>
+    <script src="persistence.js" defer></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- general structural div. Uses Grid Layout to create a header and a "body" -->
+    <div class="page-content">
+      <!-- Nothing fancy, just a title. -->
+      <div class="header-container">My Localstorage Posts</div>
+
+      <!-- Structural class, wraps the actual content, ensuring we have gutters etc. -->
+      <div class="post-container">
+        <!-- Commands. We link these to our JS via onclick handlers, apart from whenPageHasLoaded() in persistence.js these are our entry-points for user-flows.  -->
+        <!-- so if you want to trace thru the application to follow the logic line-by-line these are the functions to start with-->
+        <!-- whenPageHasLoaded, toggleModal, clearPostContainer, generateTestPost -->
+        <!-- There are a few additional user-flow related functions in the modal, see comment further down for details-->
+        <div class="actions-bar">
+          <span>Actions: </span>
+          <button onclick="toggleModal('create-post')">Create New Post</button>
+          <button onclick="clearPostContainer()">Clear Storage</button>
+          <button onclick="generateTestPost()" class="outline accent">Generate Test Post</button>
+
+          <div class="pull-right">
+            <input type="checkbox" id="clearposts" checked onclick="changeWarnBehavior()" />
+            <label for="clearposts"> Warn before clearing posts?</label>
+          </div>
+        </div>
+        <!-- We target our posts to this document node using the id. This id must match the id given in the domOptions.postRootID property.-->
+        <div id="post-root"></div>
+      </div>
+    </div>
+    <!-- The modal container works by normally being hidden, while having position: absolute, causing it to be removed from the document flow. -->
+    <!-- We show/hide the modals when we need them using JavaScript to append a class that changes the display property to block instead of hidden -->
+    <div class="modal-container" id="create-post">
+      <div class="modal-content-container">
+        <div class="modal-content">
+          <h2>Create new Post</h2>
+          <form>
+            <label for="post-title">Title</label>
+            <input type="text" id="post-title" />
+            <label for="post-content">Content</label>
+            <textarea name="post-content" id="post-content" cols="30" rows="10"></textarea>
+            <!-- user-flow functions: createPost, cancelPostCreate -->
+            <div><button type="button" onclick="createPost()">Submit Post</button><button type="button" class="accent outline" onclick="cancelPostCreate()">Cancel</button></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

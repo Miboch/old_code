@@ -1,0 +1,101 @@
+.form-box {
+  background-color: var(--light-accent);
+  padding: 16px;
+  width: 100%;
+  height: auto;
+}
+
+.form-box form {
+  color: var(--dark-shades);
+}
+
+form input[type="email"] {
+  padding: 4px;
+  width: 40%;
+}
+
+
+form input:invalid {
+  border-color: crimson;
+  position: relative;
+}
+
+form input[type="password"] {
+  padding: 4px;
+  width: 40%;
+}
+
+form input[type="text"] {
+  padding: 4px;
+  width: 40%;
+}
+
+.form-box label {
+  color: var(--brand);
+  display: block;
+  font-size: 1.2rem;
+  margin-bottom: .5rem;
+  margin-top: 24px;
+}
+
+.form-box label:first-child {
+  margin-top: 0;
+}
+
+form button {
+  background-color: var(--light-shades);
+  border: 2px solid var(--dark-accent);
+  color: var(--dark-accent);
+  padding: 8px 16px;
+}
+
+form button:hover {
+  cursor: pointer;
+  background-color: var(--dark-accent);
+  color: var(--light-shades);
+}
+
+.toastr {
+  background-color: var(--light-shades);
+  padding: 16px;
+  position: absolute;
+  bottom: 5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--dark-accent);
+  box-shadow: 3px 3px 4px -1px #222;
+}
+
+
+.backdrop {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: var(--dark-shades);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+}
+
+.modal {
+  background-color: var(--light-shades);
+  padding: 16px;
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 620px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  color: var(--dark-accent);
+  box-shadow: 3px 3px 4px -1px #222;
+}

@@ -1,0 +1,256 @@
+<div class="jumbo alt-2">
+  <div class="half-fade"></div>
+  <div class="gutters">
+    <h1>API Docs</h1>
+    <h2>
+      This page describes each of the available API endspoints and what data to
+      expect when calling them
+    </h2>
+  </div>
+</div>
+<section></section>
+<section>
+  <div class="gutters">
+    <h1>Todo</h1>
+
+    <!-- get: /api/todo -->
+    <div class="block get">
+      <div class="title"><span class="pill">GET</span> /api/todo/</div>
+      <p>Returns a list of todo objects</p>
+      <h2>parameters</h2>
+      <p>none</p>
+      <h2>response</h2>
+      <pre>
+        {{
+          "[
+          {
+            id: number,
+            title: string,
+            description: string
+          }
+        ]"
+        }}
+      </pre>
+    </div>
+
+    <!-- get:/api/todo/:todoId -->
+    <div class="block get">
+      <div class="title"><span class="pill">GET</span> /api/todo/:todoId</div>
+      <p>Returns a specific todo list with its associated tasks</p>
+      <h2>parameters</h2>
+      <p><em>todoId</em> - integer</p>
+      <h2>response</h2>
+      <pre>
+        {{
+          "[
+          {
+            id: number,
+            title: string,
+            description: string,
+            tasks: [
+              {
+                id: number,
+                taskname: string,
+                completed: boolean
+              }
+            ]
+          }
+        ]"
+        }}
+      </pre>
+    </div>
+
+    <!-- put: /api/todo/:todoId-->
+    <div class="block put">
+      <div class="title"><span class="pill">PUT</span> /api/todo/:todoId</div>
+      <p>Update the title and description of a todo item</p>
+      <h2>parameters</h2>
+      <p>
+        <b>route params</b><br />
+        <em>todoId</em> - integer
+      </p>
+      <p>
+        <b>body</b>
+      </p>
+      <pre>
+        {{ "{
+          title: string,
+          description: string
+        }" }}
+      </pre>
+      <h2>response</h2>
+      <p>200 ok</p>
+    </div>
+
+    <!-- post: /api/todo -->
+    <div class="block post">
+      <div class="title"><span class="pill">POST</span> /api/todo/</div>
+      <p>Create a new todo item with a specified title and description</p>
+      <h2>parameters</h2>
+      <p>
+        <b>body</b>
+      </p>
+      <pre>
+          {{
+          "{
+            title: string,
+            description: string
+          }"
+        }}
+        </pre
+      >
+      <h2>response</h2>
+      <p>200 ok</p>
+    </div>
+
+    <!-- delete: /api/todo/:todoId -->
+    <div class="block delete">
+      <div class="title">
+        <span class="pill">DELETE</span> /api/todo/:todoId
+      </div>
+      <p>Deletes a todo with the specified id if the if exists.</p>
+      <h2>parameters</h2>
+      <p>
+        <b>route params</b><br />
+        <em>todoId</em> - integer
+      </p>
+      <h2>response</h2>
+      <p>200 Ok</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="gutters">
+    <h1>Task</h1>
+
+    <!-- get: /api/task -->
+    <div class="block get">
+      <div class="title"><span class="pill">GET</span> /api/task</div>
+      <p>Fetches a list of all tasks.</p>
+      <h2>parameters</h2>
+      <p>
+        none
+      </p>
+      <h2>response</h2>
+      <pre>
+        {{
+          "
+          [
+            {
+              id: number,
+              taskname: string,
+              completed: boolean,
+              todo_id: number
+            }
+          ]
+        "
+        }}
+      </pre>
+    </div>
+
+    <!-- get: /api/task/:taskId -->
+    <div class="block get">
+      <div class="title"><span class="pill">GET</span> /api/task/:taskId</div>
+      <p>Retrieves a single task by a given id, if the id exists</p>
+      <h2>parameters</h2>
+      <p>
+        <b>route params</b><br />
+        <em>taskId</em> - integer
+      </p>
+      <h2>response</h2>
+      <pre>
+          {{
+          "
+            {
+              id: number,
+              taskname: string,
+              completed: boolean,
+              todo_id: number
+            }
+          "
+        }}
+        </pre
+      >
+    </div>
+
+    <!-- put: /api/task/:taskId -->
+    <div class="block put">
+      <div class="title"><span class="pill">PUT</span> /api/task/:taskId</div>
+      <p>updates the taskname and completion status of a todo by a given id</p>
+      <h2>parameters</h2>
+      <p>
+        <b>route params</b><br />
+        <em>taskId</em> - integer
+      </p>
+      <p>
+        <b>body</b>
+      </p>
+      <pre>
+        {{
+          "
+          {
+            taskname: string,
+            completed: boolean | [0, 1]
+          }
+        "
+        }}
+      </pre>
+      <h2>response</h2>
+      <p>200 Ok</p>
+    </div>
+
+    <!-- put: /api/task/:taskId/complete -->
+    <div class="block put">
+      <div class="title">
+        <span class="pill">PUT</span> /api/task/:taskId/complete
+      </div>
+      <p>Convenience method for marking a specific task as complete</p>
+      <h2>parameters</h2>
+      <p>
+        <b>route params</b><br />
+        <em>todoId</em> - integer
+      </p>
+      <h2>response</h2>
+      <p>200 Ok</p>
+    </div>
+    
+    <!-- post: /api/task -->
+    <div class="block post">
+      <div class="title">
+        <span class="pill">POST</span> /api/task
+      </div>
+      <p>Create a new Task</p>
+      <h2>parameters</h2>
+      <p>
+        <b>body</b>
+      </p>
+      <pre>
+        {{
+          "
+          {
+            taskname: string,
+            completed: boolean | [0 ,1],
+            todo_id: number
+          }
+          "
+        }}
+      </pre>
+      <h2>response</h2>
+      <p>200 Ok</p>
+    </div>
+
+    <!-- delete: /api/task/:taskId-->
+    <div class="block delete">
+      <div class="title"><span class="pill">DELETE</span> /api/task/:taskId</div>
+      <p>Delete a todo item with the matching id</p>
+      <h2>parameters</h2>
+      <p>
+        <b>route params</b><br />
+        <em>todoId</em> - integer
+      </p>
+      <h2>response</h2>
+      <p>200 Ok</p>
+    </div>
+  </div>
+</section>

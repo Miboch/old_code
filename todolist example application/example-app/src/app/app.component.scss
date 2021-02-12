@@ -1,0 +1,13 @@
+@import "src/assets/colors";
+
+
+.grid {
+  display: grid;
+  grid-template-rows: 110px 1fr;
+  grid-template-columns: 1fr;
+  height: 100%;
+}
+
+.content-section {
+  overflow-y: auto;
+}

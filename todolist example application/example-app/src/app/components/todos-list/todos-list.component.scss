@@ -1,0 +1,43 @@
+@import 'src/assets/colors';
+.m-t-3 {
+  margin-top: 3rem;
+}
+
+.white-border {
+  background-color: #fafafa;
+  padding: .5rem 1rem;
+}
+
+.todo {
+  display: flex;
+  align-items: center;
+  padding: .25rem;
+}
+
+.todo:nth-child(2n) {
+  background-image: linear-gradient(to right, $accent, transparent);
+  color: $black;
+}
+
+.bottom-controls {
+  position: relative;
+  margin-top: 1rem;
+  display: flex;
+  justify-content: flex-end;
+  background-color: #fafafa;
+  border-top: 2px solid darken(#fafafa, 4);
+}
+
+.max-tall {
+  border-top: 2px solid darken(#fafafa, 4);
+  height: 480px;
+  overflow-y: scroll;
+  div {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.striked {
+  text-decoration: line-through;
+}

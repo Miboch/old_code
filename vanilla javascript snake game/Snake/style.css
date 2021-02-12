@@ -1,0 +1,267 @@
+:root {
+  --transparent-black: rgba(0,0,0,0.25);
+  --transparent-black-heavy: rgba(0,0,0,0.8);
+  --menu-base-color: #fff6ed;
+  --light-font: whitesmoke;
+  --dark-font: #222;
+  --accent-color: #fabd04;
+  --secondary-color: #ff6c00;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.logo {
+  position: relative;
+  margin: 2rem auto;
+  display: inline-block;
+  
+}
+
+.logo::after {
+  content: "🐍 💗 🍎";
+  position: absolute;
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  font-size: 16pt;
+  bottom: -10px;
+  left: 0;
+  font-weight: bold;
+}
+
+html {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  background-image: url('grass.png');
+  background-size: contain;
+  background-position: bottom center;
+  background-repeat: no-repeat;
+  background-color: skyblue;
+}
+
+.grid-base {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 400px 1fr;
+  grid-template-rows: 1fr;
+}
+
+
+.outlet {
+  vertical-align: middle;
+  text-align: center;
+  grid-column-start: 2;
+  grid-row-start: 1;
+}
+
+.left-column {
+  padding: 1rem;
+  grid-row-start: 1;
+  grid-column-start: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  overflow: hidden;
+  box-shadow: 6px 0 6px -3px #000;
+  background-image: url("snake.jpg");
+  background-size: contain;
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-color: var(--menu-base-color);
+}
+
+.left-column > fieldset {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  overflow: hidden;
+  padding: 0;
+  border-color: var(--transparent-black);
+  margin-bottom: .5rem;
+  background-color: var(--transparent-black);
+}
+
+.left-column > fieldset > legend {
+  font-size: 14pt;
+  padding: .25rem 1.5rem;
+  background-color: var(--transparent-black-heavy);
+  color: whitesmoke;
+  border-radius: 12px / 4px;
+  z-index: 10;
+  margin-bottom: 1rem;
+}
+
+#txtLog {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+#txtLog > *:nth-child(2n) {
+  background-color: rgba(0,0,0,0.04);
+}
+
+#txtLog > * {
+  color: white;
+}
+
+
+canvas {
+  background-color: var(--accent-color); 
+  border: 7px black solid;
+  display: block;
+  margin: 0 auto;
+}
+
+.attribution {
+  font-weight: bold;
+  color: #444;
+}
+
+.music-attribution {
+  position: absolute;
+  bottom: 0;
+  width: calc(100% - 400px);
+  padding: .25rem;
+  line-height: 10pt;
+  font-size: 10pt;
+  background-color: var(--transparent-black-heavy);
+  color: whitesmoke;
+  display: flex;
+  justify-content: space-around;
+}
+
+.debug {
+  position: relative;
+  height: 320px;
+  background-color: var(--transparent-black);
+  margin-bottom: 1rem;
+  text-align: left;
+  border: 1px solid var(--transparent-black);
+}
+
+.debug-title {
+  padding: .5rem;
+  font-size: 16pt;
+  text-align: center;
+  line-height: 16pt;
+  background-color: var(--transparent-black-heavy);
+  color: var(--light-font);
+}
+
+.inset {
+  padding: .5rem;
+}
+
+.f-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex-grow: 1;
+}
+
+.debug small {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  text-align: center;
+}
+
+.debug label {
+  display: block;
+}
+
+.debug input {
+  width: 80%;
+  margin-bottom: .5rem;
+}
+
+.debug form {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 1rem;
+  font-family: monospace;
+  font-size: 12pt;
+  font-weight: bold;
+}
+
+.debug form button {
+  display: block;
+  margin: 0 auto;
+  width: 80%;
+  margin-bottom: .5rem;
+  padding: .25rem; 
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 80%;
+  margin: 0 auto .5rem auto;
+  border: 2px solid var(--transparent-black);
+  padding: .5rem .25rem ;
+}
+
+
+.debug form .button-group > button {
+  flex: 1;
+  width: unset;
+  margin-bottom: 0;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+button.primary {
+  background-color: var(--secondary-color);
+  color: var(--light-font);
+  border: 0;
+  outline: none;
+  font-weight: bold;
+}
+
+button.primary:active {
+  background-color: var(--light-font);
+  color: var(--dark-font);
+  
+}
+
+.canvas-container {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.instructions {
+  display: flex;
+  justify-content: space-between;
+  color: var(--accent-color);
+  background-color: var(--transparent-black-heavy);
+  padding: .5rem;
+  font-weight: bold;
+  font-family: monospace;
+  font-size: 14pt;
+}

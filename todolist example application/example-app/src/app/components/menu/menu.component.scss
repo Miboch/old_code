@@ -1,0 +1,84 @@
+@import "src/assets/colors";
+
+.menu {
+  position: relative;
+  background-color: $primary;
+  padding: 1rem;
+  @include shadow;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 10;
+}
+
+.brand {
+  font-weight: bold;
+  font-size: 2em;
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+  img {
+    display: inline-block;
+    transform: rotate(-5deg) skew(5deg);
+    height: 55px;
+    width: auto;
+  }
+}
+
+.decorate {
+  position: absolute;
+  height: 3px;
+  background-color: lighten($primary, 15);
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  align-self: flex-end;
+  li {
+    margin-right: 1rem;
+  }
+  li:last-child {
+    margin-right: 0;
+  }
+
+  a {
+    font-weight: bold;
+    text-decoration: none;
+    color: $gray;
+    &:hover,
+    &.activated {
+      color: $accent;
+      border-bottom: 1px solid tomato;
+    }
+  }
+}
+
+.cta {
+  position: absolute;
+  right: 25%;
+  top: 0;
+  height: 35px;
+  border-radius: 0 0 5px 5px;
+  background-color: $black;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  color: $white;
+  padding: 0 2rem;
+  a {
+    color: $white;
+    text-decoration: none;
+    &:hover {
+      color: $accent;
+      border-bottom: 1px solid tomato;
+    }
+  }
+}

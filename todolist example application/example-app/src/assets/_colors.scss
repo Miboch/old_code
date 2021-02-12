@@ -1,0 +1,10 @@
+$primary: #4e6b4c;
+$white: #f2f2f2;
+$gray: #bcbcbc;
+$accent: #dacd9f;
+$dark: #353539;
+$black: #222;
+
+@mixin shadow {
+  box-shadow: 0 2px 2px -1px $black;
+}

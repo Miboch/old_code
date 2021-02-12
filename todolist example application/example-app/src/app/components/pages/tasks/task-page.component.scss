@@ -1,0 +1,53 @@
+@import 'src/assets/colors';
+
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  column-gap: 1rem;
+}
+
+.f-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  img {
+    display: block;
+    margin-bottom: 45px;
+  }
+  &::after {
+    position: absolute;
+    width: 100%;
+    display: flex;
+    content: "This image has no relevance to this page. I just wanted a picture";
+    justify-content: center;
+    padding: .5rem;
+    bottom: 0;
+    color: darken(whitesmoke, 25);
+  }
+}
+
+.dotted-em {
+  border: 3px dotted darken(whitesmoke, 30);
+  padding: 1rem;
+  font-weight: bold;
+  background-color: rgba($black, .125);
+}
+
+.centered {
+  text-align: center;
+}
+
+.water-boy {
+  height: 620px;
+  width: 100%;
+  background-image: url("https://source.unsplash.com/620x620/?water");
+  background-size: cover;
+}
+
+code {
+  font-family: monospace;
+  background-color: rgba($black, .45);
+  padding: .125rem .25rem;
+}

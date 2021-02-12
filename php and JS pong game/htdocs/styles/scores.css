@@ -1,0 +1,21 @@
+#score-target {
+  display: flex;
+  flex-direction: column;
+}
+
+#score-target > div:nth-child(2n) {
+  background-color: rgba(0,0,0,.09);
+}
+
+#score-target > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+#score-target > div > div {
+  flex: 1;
+  text-align: center;
+  padding: 8px;
+}

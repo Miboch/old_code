@@ -1,0 +1,15 @@
+<div class="gutters">
+  <div class="controls">
+    <h1>Todo Lists</h1>
+    <button class="primary" (click)="drawer.open()">Add New <i class="fa fa-plus"></i></button>
+  </div>
+
+  <div class="list-controls">
+    <select [ngModel]="selectedOption" (ngModelChange)="updatedTodo($event)">
+      <option *ngFor="let opt of todoTitles" [value]="opt.id">
+        {{ opt.title }}
+      </option>
+    </select>
+    <button class="delete" (click)="deleteSelected()">Delete Selected <i class="fa fa-trash"></i></button>
+  </div>
+</div>

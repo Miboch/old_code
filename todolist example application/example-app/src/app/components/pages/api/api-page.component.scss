@@ -1,0 +1,98 @@
+@import 'src/assets/colors';
+
+.block {
+  padding-bottom: 1rem;
+  margin-top: 1rem;
+}
+
+.block:first-child {
+  margin-top: unset;
+}
+
+.block .title {
+  padding: 1rem 0;
+  font-weight: bold;
+  color: $black;
+}
+
+
+.block .pill {
+  font-weight: bold;
+  padding: .25rem .5rem;
+  line-height: 1rem;
+  border-radius: 5px;
+}
+
+
+.block h2 {
+  margin: 1rem .5rem;
+  background-color: $white;
+  color: $black;
+  padding: .75rem .5rem;
+  font-size: 14pt;
+  box-shadow: 0px 1px 3px -1px $dark;
+}
+
+.block p {
+  margin: 0;
+  padding: 0 1rem;
+  color: $black;
+  margin-top: 1rem;
+
+}
+
+.block.get {
+  background-color: rgba(174, 202, 255, .8);
+
+  .title {
+    border-bottom: 1px solid #dce5ff;
+    padding: 1rem;
+  }
+  .pill {
+    background-color: mediumblue;
+    color: $white;
+  }
+}
+
+.block.put {
+  background-color: #ffe4c1;
+  .title {
+    border-bottom: 1px solid #dce5ff;
+    padding: 1rem;
+  }
+  .pill {
+    background-color: rgb(248, 179, 99);
+    color: $white;
+  }
+}
+
+.block.post {
+  background-color: #aee6b5;
+  .title {
+    border-bottom: 1px solid #dce5ff;
+    padding: 1rem;
+  }
+  .pill {
+    background-color: seagreen;
+    color: $white;
+  }
+}
+
+.block.delete {
+  background-color: #ffaaaa;
+  .title {
+    border-bottom: 1px solid #dce5ff;
+    padding: 1rem;
+  }
+  .pill {
+    background-color: crimson;
+    color: $white;
+  }
+}
+
+pre {
+  font-family: monospace;
+  background-color: $dark;
+  color: $white;
+  margin: 0 1rem;
+}
