@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Snake Game</title>
+    <script src="snake.js"></script>
+    <script>
+      // You can ignore this script. It is used to save/load the checklist so you can save your progress more conveniently.
+      // The code relevant to the "game" can be found in the snake.js file.
+      const storageKey = 'checklist-items';
+      let taskList = JSON.parse(localStorage.getItem(storageKey));
+      if (!taskList) {
+        taskList = defaultTaskList();
+      }
+
+      function saveList() {
+        localStorage.setItem(storageKey, JSON.stringify(taskList));
+      }
+
+      function checkboxClicked(task) {
+        return function (event) {
+          task.complete = event.target.checked;
+          saveList();
+        };
+      }
+
+      function defaultTaskList() {
+        return [
+          {
+            title: 'Draw gridlines',
+            funcName: 'drawGridLines',
+            desc: 'use the function drawGridLines to draw lines on the canvas corresponding to the number of gridCells',
+          },
+          {
+            title: 'Draw the snake',
+            funcName: 'drawSnake',
+            desc:
+              'we cannot play if we cannot see the snake! Use the provided code as a starting point and draw each segment of the snake. Hint, you can use the variable gridSize for both the length and width of each segment',
+          },
+          {
+            title: 'Shiny Shiny apples',
+            funcName: 'drawApple',
+            desc: 'Where to go but to find shiny food! Let our snake know where to go, by filling in a grid cell with a nice red colour',
+          },
+          {
+            title: 'Points-a-plenty',
+            funcName: 'drawScore',
+            desc: 'We want to know how many shiny apples our snake has eaten, draw out the score in one of the corners',
+          },
+          {
+            title: 'Slitherin along',
+            funcName: 'moveSnake',
+            desc:
+              'Let us get moving! The snake that is. Implement this function to get the snake moving. Hint: Move the last element in the array to the front, and then set its coordinates to the coordinates of the old first, plus the direction',
+          },
+          {
+            title: 'Turn it up',
+            funcName: 'whenPlayerPressesUp',
+            desc: 'Change the direction variable so the snake starts moving in a different direction, when the player presses Up',
+          },
+          {
+            title: 'Turn it down',
+            funcName: 'whenPlayerPressesDown',
+            desc: 'Change the direction variable so the snake starts moving in a different direction, when the player presses Down',
+          },
+          {
+            title: 'Move it left',
+            funcName: 'whenPlayerPressesLeft',
+            desc: 'Change the direction variable so the snake starts moving in a different direction, when the player presses Left',
+          },
+          {
+            title: 'Move it right',
+            funcName: 'whenPlayerPressesRight',
+            desc: 'Change the direction variable so the snake starts moving in a different direction, when the player presses Right',
+          },
+          {
+            title: 'Ghost busting',
+            funcName: 'whenPlayerPresses*',
+            desc:
+              'If you did not do so already, create a check in every whenPlayerPresses function so the snake will not begin walking backwards through itself. Hint: Before setting the new direction, check the current direction on the same axis',
+          },
+          {
+            title: 'Touching the top',
+            funcName: 'snakeTouchesTopEdge',
+            desc: 'Choose 1 of 2 behaviors: Either set the gameover state to true to end the game, or wrap around the snake position so that it enters from the opposite edge,',
+          },
+          {
+            title: 'Touching the bottom',
+            funcName: 'snakeTouchesBottomEdge',
+            desc: 'Choose 1 of 2 behaviors: Either set the gameover state to true to end the game, or wrap around the snake position so that it enters from the opposite edge,',
+          },
+          {
+            title: 'Touching the left',
+            funcName: 'snakeTouchesLeftEdge',
+            desc: 'Choose 1 of 2 behaviors: Either set the gameover state to true to end the game, or wrap around the snake position so that it enters from the opposite edge,',
+          },
+          {
+            title: 'Touching the right',
+            funcName: 'snakeTouchesRightEdge',
+            desc: 'Choose 1 of 2 behaviors: Either set the gameover state to true to end the game, or wrap around the snake position so that it enters from the opposite edge,',
+          },
+          {
+            title: 'Eating apples',
+            funcName: 'snakeTouchesApple',
+            desc: 'Add to the players score when the snake touches the apple, and move the apple to a new location',
+          },
+          {
+            title: 'No carnivorous snakes',
+            funcName: 'snakeRunsIntoItself',
+            desc: 'Change this function so that the game will end if the snake runs into itself. Hint: use the gameover variable.',
+          },
+        ].map((e) => ({ ...e, complete: false }));
+      }
+
+      function createTasks() {
+        let list = document.getElementById('tasklist');
+        taskList.forEach((task) => {
+          let root = document.createElement('li');
+          let title = document.createElement('h4');
+          title.innerHTML = task.title;
+          let funcs = document.createElement('div');
+          funcs.innerHTML = task.funcName;
+          funcs.classList.add('function-list');
+          let desc = document.createElement('p');
+          desc.innerHTML = task.desc;
+          let inputContainer = document.createElement('div');
+          let label = document.createElement('label');
+          label.innerHTML = 'Completed';
+          let checkbox = document.createElement('input');
+          checkbox.type = 'checkbox';
+          checkbox.checked = task.complete;
+          const fakeId = task.title.replace(/\W/g, '');
+          checkbox.id = fakeId;
+          checkbox.addEventListener('change', checkboxClicked(task));
+          label.htmlFor = fakeId;
+          inputContainer.appendChild(label);
+          inputContainer.appendChild(checkbox);
+          inputContainer.classList.add('checkmark-box');
+          root.appendChild(title);
+          root.appendChild(funcs);
+          root.appendChild(desc);
+          root.appendChild(inputContainer);
+          list.appendChild(root);
+        });
+      }
+      document.addEventListener('DOMContentLoaded', createTasks);
+    </script>
+    <style>
+      :root {
+        --background-color: #f9ffd6;
+        --instruction-background-color: #dba34f;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      body {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+        background-color: var(--background-color);
+      }
+
+      section {
+        padding: 1rem;
+      }
+
+      section section {
+        padding: 1rem 0;
+      }
+
+      h1,
+      h2 {
+        font-weight: lighter;
+      }
+
+      h1 {
+        font-size: 28pt;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+      }
+
+      h2 {
+        font-size: 22pt;
+      }
+
+      .instructions > h2 {
+        color: #fafafa;
+        margin-bottom: 0;
+      }
+
+      .instructions {
+        grid-column: 1/5;
+        background-color: var(--instruction-background-color);
+        box-shadow: 3px 0 4px -2px #222;
+        display: flex;
+        flex-direction: column;
+        overflow-y: scroll;
+      }
+
+      .instructions ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .instructions ul li {
+        width: 100%;
+        background-color: #fafafa;
+        padding: 1rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .game-area {
+        grid-column: 5/17;
+        overflow-y: scroll;
+      }
+
+      canvas {
+        border: 1px solid black;
+        width: 600px;
+        height: 600px;
+      }
+
+      .function-list {
+        background-color: rgba(0, 0, 0, 0.05);
+        padding: 0.5rem;
+        position: relative;
+        margin: 3rem 0 2rem 0;
+      }
+
+      .instructions ul li p {
+        background-color: rgba(0, 0, 0, 0.05);
+        padding: 0.5rem;
+        position: relative;
+      }
+
+      .instructions ul li p::before {
+        position: absolute;
+        display: block;
+        top: -1.2rem;
+        left: 0;
+        content: 'Task Objective';
+        font-weight: lighter;
+      }
+
+      .instructions ul li h4 {
+        background-color: rgb(66, 2, 21);
+        text-align: center;
+        padding: 1rem;
+        margin: -1rem -1rem 0 -1rem;
+        color: #f9ffd6;
+      }
+
+      .checkmark-box {
+        display: flex;
+        justify-content: center;
+        align-items: baseline;
+        margin-top: 2rem;
+        user-select: none;
+      }
+
+      h4 span {
+        color: #fafafa;
+        background-color: #222;
+        padding: .25rem;
+        border-radius: 4px;
+      }
+
+      .help h4 {
+        margin-top: 3rem;
+      }
+
+      .function-list::before {
+        position: absolute;
+        display: block;
+        top: -1.2rem;
+        left: 0;
+        content: 'Function for this task';
+        font-weight: lighter;
+      }
+
+      code {
+        width: 400px;
+        background-color: #333;
+        color: #ccff02;
+        padding: 1rem;
+        margin-bottom: 1rem;
+        display: block;
+      }
+
+    </style>
+  </head>
+  <body>
+    <section class="instructions">
+      <h2>Instructions</h2>
+      <p>Welcome to the snake challenge. The objective of this challenge is to make a snake game (with a little bit of help provided)</p>
+      <p>For this challenge you have been provided with a file snake.js which has been pre-configured so that your task will be to fill out all the empty functions with code</p>
+      <p>By the end, you should have a fully working snake game!</p>
+      <p><em>Happy coding!</em></p>
+      <h2>Task Checklist</h2>
+      <p>Here you will find a list of tasks. Each task will have a paired function which you will have to implement the code for.</p>
+      <ul id="tasklist"></ul>
+    </section>
+    <section class="game-area">
+      <h1>Snake Game</h1>
+      <p>You can press [R] to reload the page</p>
+      <canvas id="cvs"></canvas>
+      <section class="help">
+        <h2>Help</h2>
+        <p>In this section you can find some helpful information for what some of the things in the provided code are</p>
+        <h4>The <span>snake</span> variable</h4>
+        <p>The snake variable is an array of position objects that each describe a coordinate-set x, and y.</p>
+        <p><em>Position Object:</em></p>
+        <code>{x: number, y: number}</code>
+        <p>For example, to get the x-coordinate of the snake's "head" you would have to do so in the following manner:</p>
+        <code>snake[0].x</code>
+        <h4>the <span>apple</span> variable</h4>
+        <p>The apple variable is a single position object.</p>
+        <p><em>Position Object:</em></p>
+        <code>{x: number, y: number}</code>
+        <p>For example, to get the apple's x-coordinate you would have to do so in the following manner:</p>
+        <code>apple.x</code>
+        <h4>The <span>getNewRandomLocation()</span> function</h4>
+        <p>This function returns a position object, at a random location which is within the grid, and does not overlap with the snake.</p>
+        <p><em>Position Object:</em></p>
+        <code>{x: number, y: number}</code>
+        <h4>The <span>direction</span> variable</h4>
+        <p>The direction variable is a position object</p>
+        <p><em>Position Object:</em></p>
+        <code>{x: number, y: number}</code>
+        <p>However, its intended use is a little special: Instead of describing a location in the grid, it describes how many "grid-cells" to add to any position you want to move every time the game updates</p>
+        <p>Naturally, this doesn't happen on its own: you are meant to change the direction when the player presses a key, and write the code in moveSnake to add this direction to the correct x-y-coordinate</p>
+        <h4>Tips for solving <span>moveSnake()</span></h4>
+        <p>The essence of this task is changing the coordinate values of the position objects in the snake array.</p>
+        <p>The provided code assumes you will do so by following these steps</p>
+        <ol>
+          <li>move last last element of the snake array into the front of the array.</li>
+          <li>Update the x and y values of the new "head" to the value of the old head, plus the direction!</li>
+          <li>Only use values 0, 1, and -1 for the direction object. Using any other values will make the moveSnake function a lot more complicated to implement.</li>
+        </ol>
+      </section>
+    </section>
+  </body>
+</html>
